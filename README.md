@@ -1,1 +1,3 @@
 # RollStats
+I was just curious the other day what the mean and median were for rolling 2 d20s and taking the higher or the lower, so I just wrote up a super quick program...
+It's like 50 lines, and it just prints the means and medians, but it uses cool java functions instead of super-long for loops and if statements and stuff for everything.
