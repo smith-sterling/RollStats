@@ -55,10 +55,9 @@ public class Main {
                 values.stream()
                         .sorted()
                         .collect(Collectors.collectingAndThen(
-                                Collectors.toList(), list -> { return list.size() % 2 == 0 ?
+                                Collectors.toList(), list -> list.size() % 2 == 0 ?
                                             (list.get(list.size() / 2 - 1) + list.get(list.size() / 2)) / 2.0 :
-                                            list.get(list.size() / 2);
-                                })));
+                                            list.get(list.size() / 2))));
 //        values.sort(Integer::compareTo);
 //        System.out.println("The median is " + values.get(values.size() / 2));
     }
