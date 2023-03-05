@@ -11,24 +11,37 @@ public class Main {
     public static void main(String[] args) {
         Map<Integer, Integer> advRolls = new TreeMap<>();
         Map<Integer, Integer> disRolls = new TreeMap<>();
+        Map<Integer, Integer> superAdvRolls = new TreeMap<>();
         for (int i = 0; i < 20; ++i) {
             for (int j = 0; j < 20; ++j) {
                 advRolls.merge(max(i, j) + 1, 1, Integer::sum);
                 disRolls.merge(min(i, j) + 1, 1, Integer::sum);
+                for (int k = 0; k < 20; ++k) {
+                    superAdvRolls.merge(max(max(i, j), k), 1, Integer::sum);
+                }
             }
         }
 //        advRolls.forEach((key, value) -> System.out.println(key + ": " + value));
 //        disRolls.forEach((key, value) -> System.out.println(key + ": " + value));
+//        superAdvRolls.forEach((key, value) -> System.out.println(key + ": " + value));
 
         List<Integer> advRollsArray = new ArrayList<>();
         advRolls.forEach((key, value) -> { for (int i = 0; i < value; ++ i) { advRollsArray.add(key); } });
+        System.out.println("\nAdvantage:");
         printMean(advRollsArray);
         printMedian(advRollsArray);
 
         List<Integer> disRollsArray = new ArrayList<>();
         disRolls.forEach((key, value) -> { for (int i = 0; i < value; ++ i) { disRollsArray.add(key); } });
+        System.out.println("\nDisadvantage:");
         printMean(disRollsArray);
         printMedian(disRollsArray);
+
+        List<Integer> superAdvArray = new ArrayList<>();
+        superAdvRolls.forEach((key, value) -> { for (int i = 0; i < value; ++ i) { superAdvArray.add(key); } });
+        System.out.println("\nSuper Advantage:");
+        printMean(superAdvArray);
+        printMedian(superAdvArray);
     }
     public static void printMean(List<Integer> values) {
         System.out.println("The mean is " +
